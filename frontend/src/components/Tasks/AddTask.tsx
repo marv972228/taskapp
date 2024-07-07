@@ -31,7 +31,7 @@ export default function AddTask() {
         onChange={e => setText(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-      <AddButton onClick={handleAddTask}>Add</AddButton>
+
     </AddTaskContainer>
   );
 }

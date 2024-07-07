@@ -8,7 +8,7 @@ const InputComponent = styled.input`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   outline: none;
   font-size: 16px;
-
+  width: 100%;
   &:focus {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
