@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const AppWrapper = styled.div`
   font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -85,13 +83,12 @@ export const ButtonContainer = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 50vh;
   padding: 20px;
   box-sizing: border-box;
   background-color: #f0f0f0;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
@@ -101,7 +98,6 @@ export const Container = styled.div`
 
 export const AddTaskContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   width: 100%;
@@ -112,11 +108,12 @@ export const AddButton = styled.button`
   color: white;
   border: none;
   border-radius: 10px;
-  padding: 10px 15px;
+  padding: 5px 5px;
+  margin-left: 10px;
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100px;
+  width: 50px;
   
   &:hover {
     background-color: #45a049;
@@ -149,27 +146,44 @@ export const Header = styled.h1`
 
 export const FancyCheckbox = styled.input`
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-color: #fff;
-  border: 2px solid #007bff;
-  border-radius: 3px;
+  border: 2px solid #4CAF50;
+  border-radius: 50%;
   cursor: pointer;
   margin-right: 10px;
-  
+  position: relative;
+
   &:checked {
-    background-color: #007bff;
-    border: 2px solid #007bff;
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+  }
+
+  &:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 5px;
+    border: solid white;
+    border-width: 0 0 2px 2px;
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 `;
 
 
-export const TaskContainer = styled.label`
+export const TaskContainer = styled.label<{ done: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
   width: 100%;
+  background-color: ${props => (props.done ? '#f8f8f8' : 'transparent')};
+  color: ${props => (props.done ? 'darkgreen' : '#000')};
+  padding: 10px;
+  border-radius: 5px;
 `;
 
 export const TaskContent = styled.div`

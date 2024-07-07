@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTasks, useTasksDispatch } from '../../context/TaskContext';
 import InputComponent from '../Input/InputStyled';
 import { List, ListItem, ItemText, RemoveButton, EditButton, ButtonContainer, FancyCheckbox, TaskContainer, TaskContent } from './StyledComponents';
+import AddTask from './AddTask';
 
 type Task = {
   id: number;
@@ -16,13 +17,18 @@ type TaskProps = {
 export default function TaskList() {
   const tasks = useTasks();
   return (
+
     <List>
+      <AddTask/>
       {tasks.map((task: Task) => (
         <ListItem key={task.id}>
           <Task task={task} />
         </ListItem>
       ))}
+      
     </List>
+      
+
   );
 }
 
@@ -96,23 +102,25 @@ function Task({ task }: TaskProps) {
   }
 
   return (
-    <TaskContainer>
+    <TaskContainer done={task.done}>
       {taskContent}
-      <ButtonContainer>
-        <EditButton onClick={() => setIsEditing(true)}>
-          Edit
-        </EditButton>
-        <RemoveButton
-          onClick={() => {
-            dispatch({
-              type: 'delete',
-              id: task.id
-            });
-          }}
-        >
-          Delete
-        </RemoveButton>
-      </ButtonContainer>
+      {!isEditing && (
+        <ButtonContainer>
+          <EditButton onClick={() => setIsEditing(true)}>
+            Edit
+          </EditButton>
+          <RemoveButton
+            onClick={() => {
+              dispatch({
+                type: 'delete',
+                id: task.id
+              });
+            }}
+          >
+            Delete
+          </RemoveButton>
+        </ButtonContainer>
+      )}
     </TaskContainer>
   );
 }

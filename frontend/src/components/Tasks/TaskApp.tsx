@@ -14,7 +14,7 @@ export default function TaskApp() {
           <CompletedTasksCounter />
           <Header>Day off in Kyoto</Header>
           <TaskList />
-          <AddTask />
+          
         </Container>
       </AppWrapper>
     </TasksProvider>
